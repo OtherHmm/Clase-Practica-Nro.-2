@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Clase_Practica_Nro._2
             do
             {
                 Console.Clear();
-                Console.WriteLine("Buenas, cuales ejercicos quiere ver :P :");
+                Console.WriteLine("Buenas, Eliga los ejercicios :P :");
                 Console.WriteLine("");
                 Console.WriteLine("1. Primeros ejercicios");
                 Console.WriteLine("2. Segundos ejercicios");
@@ -102,7 +103,7 @@ namespace Clase_Practica_Nro._2
                 }
             } while (!Salir);
         }
-        // primeros ejercicios
+        // primeros ejercicios mediante recursividad
 
         static void Factorial()
         {
@@ -172,14 +173,15 @@ namespace Clase_Practica_Nro._2
                 return FibonacciFormula(n - 1) + FibonacciFormula(n - 2);
         }
 
-        // segundos ejercicios
+        // segundos ejercicios usando sobrecarga
 
         static void CalculoArea()
         {
+            Console.Clear();
             Console.WriteLine("Seleccione la figuja de la que desea calcular el area");
             Console.WriteLine("1. Circulo");
             Console.WriteLine("2. Cuadrado");
-            Console.WriteLine("2. Rectangulo");
+            Console.WriteLine("3. Rectangulo");
 
             byte figura = Convert.ToByte(Console.ReadLine());
 
@@ -189,12 +191,12 @@ namespace Clase_Practica_Nro._2
                     Console.WriteLine("Digite el radio del circulo");
                     CalcularArea(Convert.ToDouble(Console.ReadLine()));
                     break;
-                    case 2:
+                case 2:
                     Console.WriteLine("Digite el tamaño de los lados");
                     double lado = Convert.ToDouble(Console.ReadLine());
                     CalcularArea(lado, true);
                     break;
-                    case 3:
+                case 3:
                     Console.WriteLine("Digite el ancho");
                     double ancho = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine("Digite el largo");
@@ -210,14 +212,19 @@ namespace Clase_Practica_Nro._2
         static void CalcularArea(double radio)
         {
             Console.WriteLine($" EL area del circulo es de {Math.PI * radio * radio}");
+            Console.ReadLine();
         }
         static void CalcularArea(double lado, bool esCuadrado)
         {
             Console.WriteLine($" EL area del cuadrado es de {lado * lado}");
+            Console.ReadLine();
+
         }
         static void CalcularArea(double largo, double ancho)
         {
             Console.WriteLine($" EL area del circulo es de {largo * ancho}");
+            Console.ReadLine();
+
         }
 
         static void ConversionMedidas()
@@ -234,7 +241,7 @@ namespace Clase_Practica_Nro._2
             double resultado = Convert.ToDouble(ConversionProceso(unidades, medidaBase, medidaNueva));
 
             Console.WriteLine($"{unidades} {medidaBase} en {medidaNueva} son {resultado} {medidaNueva}");
-            Console.ReadKey(); 
+            Console.ReadKey();
         }
         static double ConversionProceso(int cant, string medidaBase, string medidaNueva)
         {
@@ -249,33 +256,94 @@ namespace Clase_Practica_Nro._2
 
             Console.WriteLine("Medida incorrecta o desconocida, pruebe con: cm, m o km");
             return cant;
-
         }
 
         static void Ordenar()
         {
-        
+            Console.WriteLine("No termine x_x quedo a medias");
+            Console.ReadKey();
+
+
+            /* byte i = 0;
+             Console.WriteLine("Es un arreglo de: ");
+             Console.WriteLine("1. palabras");
+             Console.WriteLine("2. numeros");
+             Console.WriteLine("(limite 5 elemtentos)");
+             byte arregloTipo = Convert.ToByte(Console.ReadLine());
+
+             if (arregloTipo == 1)
+             {
+                 List<string> lista = new List<string>(5);
+
+                 while (i<5)
+                 {
+                     Console.WriteLine("Digite el elemento");
+                     lista.Add(Console.ReadLine());
+                     i ++;
+
+                     OrdenarLista(lista);
+                 }
+             }
+             else if (arregloTipo == 2)
+             {
+                 List<int> lista = new List<int>(5);
+                 while (i < 5)
+                 {
+                     Console.WriteLine("Digite el elemento");
+                     lista.Add(Convert.ToInt32(Console.ReadLine()));
+                     i++;
+                     OrdenarLista(lista);
+
+                 }
+             }*/
         }
+        static void OrdenarLista(int lista)
+         {
+
+         }
 
         static void CambiarFormato()
         {
-            Console.WriteLine("Ingrese el dia");
-            string dd = Console.ReadLine();
-            Console.WriteLine("Ingrese el mes");
-            string mm = Console.ReadLine();
-            Console.WriteLine("Ingrese el año");
-            string aaaa = Console.ReadLine();
+            Console.Clear();
 
-            FormatoNuevo(dd, mm, aaaa);
+            bool salir = false;
+
+            Console.WriteLine("Ingrese el dia");
+            byte dd = Convert.ToByte(Console.ReadLine());
+            Console.WriteLine("Ingrese el mes");
+            byte mm = Convert.ToByte(Console.ReadLine());
+            Console.WriteLine("Ingrese el año");
+            int aaaa = Convert.ToInt32(Console.ReadLine());
+
+            while (!salir)
+            {
+                Console.WriteLine("Elija el formato: 1. dd/mm/aaaa 2. mm/dd/aaaa");
+                Console.WriteLine("0. salir");
+
+                byte formato = Convert.ToByte(Console.ReadLine());
+                if (formato == 0)
+                {
+                    salir = true;
+                }
+                 if(formato == 1)
+                {
+                    FormatoNuevo(dd, mm, aaaa);
+                }
+                 if (formato == 2)
+                {
+                    FormatoNuevo(aaaa, mm, dd);
+                }
+            }
         } 
-        static void FormatoNuevo(string dd, string mm, string aaaa)
+        static void FormatoNuevo(byte dd, byte mm, int aaaa)
         {
             Console.WriteLine($"Nuevo formato : {dd}/{mm}/{aaaa}");
+            Console.ReadKey();
         }
-        static void FormatoNuevo(string aaaa, string mm, string dd)
+        static void FormatoNuevo(int aaaa, byte mm, byte dd)
         {
             Console.WriteLine($"Nuevo formato : {mm}/{dd}/{aaaa}");
-
+            Console.ReadKey();
         }
 
         // general
