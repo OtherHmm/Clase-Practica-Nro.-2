@@ -80,13 +80,13 @@ namespace Clase_Practica_Nro._2
                                 Salir = true;
                                 break;
                             case "a":
-                                CalcularArea();
+                                CalculoArea();
                                 break;
                             case "b":
                                 ConversionMedidas();
                                 break;
                             case "c":
-                                Reordenar();
+                                Ordenar();
                                 break;
                             case "d":
                                 CambiarFormato();
@@ -171,13 +171,55 @@ namespace Clase_Practica_Nro._2
             else // formula de Fibonacci F(n) = F(n−1) + F(n−2)
                 return FibonacciFormula(n - 1) + FibonacciFormula(n - 2);
         }
-       
+
         // segundos ejercicios
 
-        static void CalcularArea()
+        static void CalculoArea()
         {
-            
+            Console.WriteLine("Seleccione la figuja de la que desea calcular el area");
+            Console.WriteLine("1. Circulo");
+            Console.WriteLine("2. Cuadrado");
+            Console.WriteLine("2. Rectangulo");
+
+            byte figura = Convert.ToByte(Console.ReadLine());
+
+            switch (figura)
+            {
+                case 1:
+                    Console.WriteLine("Digite el radio del circulo");
+                    CalcularArea(Convert.ToDouble(Console.ReadLine()));
+                    break;
+                    case 2:
+                    Console.WriteLine("Digite el tamaño de los lados");
+                    double lado = Convert.ToDouble(Console.ReadLine());
+                    CalcularArea(lado, true);
+                    break;
+                    case 3:
+                    Console.WriteLine("Digite el ancho");
+                    double ancho = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Digite el largo");
+                    double largo = Convert.ToDouble(Console.ReadLine());
+                    CalcularArea(largo, ancho);
+
+                    break;
+                default:
+                    MensajeError("No hay figura correspondiente al inciso");
+                    break;
+            }
         }
+        static void CalcularArea(double radio)
+        {
+            Console.WriteLine($" EL area del circulo es de {Math.PI * radio * radio}");
+        }
+        static void CalcularArea(double lado, bool esCuadrado)
+        {
+            Console.WriteLine($" EL area del cuadrado es de {lado * lado}");
+        }
+        static void CalcularArea(double largo, double ancho)
+        {
+            Console.WriteLine($" EL area del circulo es de {largo * ancho}");
+        }
+
         static void ConversionMedidas()
         {
             Console.Clear();
@@ -209,15 +251,33 @@ namespace Clase_Practica_Nro._2
             return cant;
 
         }
-        static void Reordenar()
+
+        static void Ordenar()
         {
         
         }
+
         static void CambiarFormato()
         {
-        
+            Console.WriteLine("Ingrese el dia");
+            string dd = Console.ReadLine();
+            Console.WriteLine("Ingrese el mes");
+            string mm = Console.ReadLine();
+            Console.WriteLine("Ingrese el año");
+            string aaaa = Console.ReadLine();
+
+            FormatoNuevo(dd, mm, aaaa);
+        } 
+        static void FormatoNuevo(string dd, string mm, string aaaa)
+        {
+            Console.WriteLine($"Nuevo formato : {dd}/{mm}/{aaaa}");
         }
-        
+        static void FormatoNuevo(string aaaa, string mm, string dd)
+        {
+            Console.WriteLine($"Nuevo formato : {mm}/{dd}/{aaaa}");
+
+        }
+
         // general
 
         static void MensajeError(string msg)
