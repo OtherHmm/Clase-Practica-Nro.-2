@@ -27,32 +27,23 @@ namespace Clase_Practica_Nro._2
 
                 switch (opcion)
                 {
-                    case 0:
-                        Salir = true;
+                    case 0: Salir = true;
                         break;
-                    case 1:
-                        Factorial();
+                    case 1: Factorial();
                         break;
-                    case 2:
-                        Tabla();
+                    case 2: Tabla();
                         break;
-                    case 3:
-                        Fibonacci();
+                    case 3: Fibonacci();
                         break;
-                    case 4:
-                        CalculoArea();
+                    case 4: CalculoArea();
                         break;
-                    case 5:
-                        ConversionMedidas();
+                    case 5: ConversionMedidas();
                         break;
-                    case 6:
-                        Ordenar();
+                    case 6: Ordenar();
                         break;
-                    case 7:
-                        CambiarFormato();
+                    case 7: CambiarFormato();
                         break;
-                    default:
-                        MensajeError("Opción inválida, elige otra.");
+                    default: MensajeError("Opción inválida, elige otra.");
                         break;
                 }
             } while (!Salir);
@@ -62,10 +53,9 @@ namespace Clase_Practica_Nro._2
         static void Factorial()
         {
             Console.Clear();
-            Console.WriteLine("Ingrese el numero que quieres calcular su factorial");
+            Console.WriteLine("Ingrese el numero que quiere calcular factorial\n");
             int numero = Convert.ToInt32(Console.ReadLine());
-            int numFact = FactorialFormula(numero);
-            Console.WriteLine($"EL factorial de {numero} es : {numFact}");
+            Console.WriteLine($"EL factorial de {numero} es : {FactorialFormula(numero)}");
             Console.ReadKey();
         }
         static int FactorialFormula(int numero)
@@ -81,10 +71,9 @@ namespace Clase_Practica_Nro._2
             Console.Clear();
             Console.WriteLine("Ingrese el numero que quieres calcular su tabla de multiplicar");
             int numero = Convert.ToInt32(Console.ReadLine());
-            int n = 1;
 
             Console.WriteLine($"Tabla del {numero}");
-            TablaImprimir(numero, n);
+            TablaImprimir(numero, 1); // 1 es el multiplicador: numero x 1 y con cada vuelta se le suma 1
             Console.ReadKey();
         }
         static void TablaImprimir(int numero, int n)
@@ -97,7 +86,7 @@ namespace Clase_Practica_Nro._2
         static void Fibonacci()
         {
             Console.Clear();
-            Console.WriteLine("¿Cuántos términos de la serie de Fibonacci deseas mostrar? ");
+            Console.WriteLine("¿Cuántos términos de la serie de Fibonacci deseas mostrar?");
             int Cant = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Serie de Fibonacci:");
@@ -164,6 +153,7 @@ namespace Clase_Practica_Nro._2
             Console.WriteLine($" EL area del circulo es de {largo * ancho}");
             Console.ReadLine();
         }
+
         static void ConversionMedidas()
         {
             Console.Clear();
@@ -267,7 +257,7 @@ namespace Clase_Practica_Nro._2
             Console.ReadKey();
         }
 
-            static void CambiarFormato()
+        static void CambiarFormato()
         {
             Console.Clear();
             bool salir = false;
@@ -283,8 +273,8 @@ namespace Clase_Practica_Nro._2
                 Console.WriteLine("0. salir");
                 byte formato = Convert.ToByte(Console.ReadLine());
                 if (formato == 0) salir = true;
-                 if(formato == 1) FormatoNuevo(dd, mm, aaaa);
-                 if (formato == 2) FormatoNuevo(aaaa, mm, dd);
+                if (formato == 1) FormatoNuevo(dd, mm, aaaa);
+                if (formato == 2) FormatoNuevo(aaaa, mm, dd);
             }
         } 
         static void FormatoNuevo(byte dd, byte mm, int aaaa)
